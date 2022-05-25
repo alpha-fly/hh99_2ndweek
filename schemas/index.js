@@ -1,8 +1,7 @@
 const mongoose = require("mongoose");
 
-//로컬용
 const connect = () => {
-    mongoose.connect("mongodb://localhost:27017/articles", {ignoreUndefined: true}).catch((err) => {
+    mongoose.connect("mongodb://test:test@localhost:27017/admin", {dbName:'articles', ignoreUndefined: true}).catch((err) => {
         console.error(err);
     });
 };
