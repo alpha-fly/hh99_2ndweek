@@ -39,7 +39,7 @@ function deleteArticle(articleId) {
       if (xhr.status == 400) {
         alert("패스워드가 맞지 않습니다.");
       }
-      window.location.href = "/";
+      window.location.reload();
     },       
     success: function (response) {                  
         alert(response['message'])
@@ -67,7 +67,7 @@ function reviseArticle(articleId) {
       if (xhr.status == 400) {
         alert("패스워드가 맞지 않습니다.");
       }
-      window.location.href = "/";
+      window.location.reload();
     },     
     success: function (response) {                  
         alert(response['message'])
