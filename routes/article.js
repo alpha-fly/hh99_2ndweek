@@ -12,7 +12,7 @@ router.get('/', (req,res) => {
 router.get("/article", async (req,res) => {             
   
   function compare (key) {
-    return (a, b) => (a[key] < b[key] ? 1 : (a[key] > b[key] ? -1 : 0));
+    return (a, b) => (Date.parse(a[key]) < Date.parse(b[key]) ? 1 : (Date.parse(a[key]) > Date.parse(b[key]) ? -1 : 0));
   }
 
   const articles_unsorted = await Articles.find();
