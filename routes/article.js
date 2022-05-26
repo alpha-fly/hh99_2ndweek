@@ -27,7 +27,7 @@ router.get("/article", async (req,res) => {
 // 게시글 작성 API 
 // * 날짜가 자동으로 들어가야 한다. OK
 // * 게시글 번호도 자동으로 들어가게 하는 것 OK
-router.post("/article/write", async (req, res) => {    
+router.post("/article/new_article", async (req, res) => {    
   const { articleId, date, title, user, password, content } = req.body;
   
    const writtenArticle = await Articles.create(
@@ -56,7 +56,7 @@ router.get("/article/:articleId", async (req,res) => {
 }); 
 
 
-// 게시글 수정 API OK **이것도 POST로 변경 가능하지만, 그러면 url을 바꿔야 함(삭제기능과 url이 겹치게 됨)
+// 게시글 수정 API OK 
 router.put("/article/:articleId", async (req, res) => {
   const { articleId } = req.params;
   const { title, user, date, password, content} = req.body;
@@ -76,7 +76,8 @@ router.put("/article/:articleId", async (req, res) => {
 
 
 // 게시글 삭제 API *** DELETE 메서드에 body 넣을 수 있는가의 문제, 되긴 되던데 일단 POST로 변경
-router.post("/article/:articleId", async (req, res) => {
+// 다시 DELETE로 변경. RESTful하게 해보려고. 근데 DELETE에 payload 없어야 한다는데 왜 req.body 사용이 가능한 거지?
+router.delete("/article/:articleId", async (req, res) => {
   const { articleId } = req.params;
   const { password } = req.body;
 
