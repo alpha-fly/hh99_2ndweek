@@ -36,7 +36,7 @@ function deleteArticle(articleId) {
       password,
     },
     error: function (xhr, status, error) {
-      if (status == 400) {
+      if (xhr.status == 400) {
         alert("패스워드가 맞지 않습니다.");
       }
       window.location.href = "/";
@@ -62,7 +62,13 @@ function reviseArticle(articleId) {
       title, 
       content, 
       password
-    },   
+    },
+    error: function (xhr, status, error) {
+      if (xhr.status == 400) {
+        alert("패스워드가 맞지 않습니다.");
+      }
+      window.location.href = "/";
+    },     
     success: function (response) {                  
         alert(response['message'])
         window.location.href ='/'      
