@@ -30,7 +30,7 @@ function deleteArticle(articleId) {
   let password = $("#password").val();  
 
   $.ajax({
-    type: "POST",
+    type: "DELETE",
     url: `/api/article/${articleId}`,
     data: {
       password,
@@ -88,7 +88,7 @@ function writeArticle() {
 
   $.ajax({
     type: "POST",
-    url: `/api/article/write`,
+    url: `/api/article/new_article`,
     data: {
       articleId,
       date,
