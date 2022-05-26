@@ -7,6 +7,7 @@ router.get('/', (req,res) => {
      res.send("this is root page");
 });
 
+
 /// 전체 게시글 목록 조회 API OK * 작성 날짜 기준 내림차순, 제목/작성자명/작성날짜 표시
 router.get("/article", async (req,res) => {             
   
@@ -21,6 +22,7 @@ router.get("/article", async (req,res) => {
       articles
   });
 });
+
 
 // 게시글 작성 API 
 // * 날짜가 자동으로 들어가야 한다. OK
@@ -54,10 +56,7 @@ router.get("/article/:articleId", async (req,res) => {
 }); 
 
 
-
-
-
-// 게시글 수정 API OK
+// 게시글 수정 API OK **이것도 POST로 변경 가능하지만, 그러면 url을 바꿔야 함(삭제기능과 url이 겹치게 됨)
 router.put("/article/:articleId", async (req, res) => {
   const { articleId } = req.params;
   const { title, user, date, password, content} = req.body;
@@ -76,8 +75,7 @@ router.put("/article/:articleId", async (req, res) => {
 });
 
 
-
-// 게시글 삭제 API *** DELETE 메서드에 body 넣을 수 있는가의 문제
+// 게시글 삭제 API *** DELETE 메서드에 body 넣을 수 있는가의 문제, 되긴 되던데 일단 POST로 변경
 router.post("/article/:articleId", async (req, res) => {
   const { articleId } = req.params;
   const { password } = req.body;
